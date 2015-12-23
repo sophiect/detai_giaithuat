@@ -25,7 +25,7 @@
 
 <script src="assets/js/jquery-1.11.1.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/Chart.min.js"></script>
-<script type="text/javascript" src="js/giaithuat.js"></script>
+<script type="text/javascript" src="js/chaygiaithuat.js"></script>
 
 <!-- JQUERY-UI -->
 <link href="jquery-ui-1.11.4/jquery-ui.css" rel="stylesheet"
@@ -42,6 +42,8 @@
 </head>
 
 <body>
+
+
 	<div class="container">
 
 		<div class="clearfix"></div>
@@ -80,7 +82,7 @@
 								<td align="left" class="cell-dialog">Số lần thực hiện <font
 									color="red">*</font></td>
 								<td align="left" class="cell-dialog"><input id="txtsolan"
-									name="txtsolan" class="input-large " type="text"></td>
+									name="txtsolan" class="input-large " type="text" ></td>
 							</tr>
 
 
@@ -118,13 +120,17 @@
 				</h2>
 
 			</div>
+			<div id = "table_tt">
+				
+				
+			</div>
 			<div align="center" class="box-content" style="width: 100%">
 			
 			
 												
 				<header>
 					<h1>Biểu Đồ</h1>
-				<!-- 	<table >
+				 	<table >
 						<tr align="left">
 							<th style="background: #83FFFF; width: 50px"></th>
 							<th style="width: 80px">Vét cạn</th>
@@ -135,65 +141,36 @@
 							<th style="background: #D3A6CE;  width: 50px"></th>
 							<th style="width: 80px"> Trượt phẳng</th>
 						</tr>
-					</table> -->
-					<table >
-						<tr align="left">
-							<th style="background: #83FFFF; width: 50px"></th>
-							<th style="width: 80px">chia để trị</th>
-						
-							<th style="background: #FBCD91;  width: 50px"></th>
-							<th style="width: 80px">Vét cạn</th>
-						
-							<th style="background: #D3A6CE;  width: 50px"></th>
-							<th style="width: 80px"> Trượt phẳng</th>
-						</tr>
-					</table>
+					</table> 
+					
 				</header>
 
-				<nav></nav>
-
-				<canvas id="canvasBar" height="500" width="1000"></canvas>
-
+				
 			</div>
 	
 			
 			<div>
 			<canvas id="canvasLine" height="500" width="1000"></canvas>
 			</div>
-				<div id = "table_tt">
-				
-				
+			<div>
+			<canvas id="canvasLine2" height="500" width="1000"></canvas>
+			</div>
+			<div style="display: none">
+			<canvas id="canvasBar" height="500" width="1000"></canvas>
 			</div>
 		</div>
 
 
 	</div>
-	<!-- 
-	 <script>
-		var BarChart = {
-			labels : [ "lan 1", "lan 2", "lan 3", "lan 4", "lan 5","lan 6", ],
-			datasets : [ {
-				fillColor : "rgba(167, 78, 158,0.5)",
-				strokeColor : "rgba(167, 78, 158,1)",
-				data : [ 13, 20, 30, 40, 50 ]
-			}, {
-				fillColor : "rgba(248, 156, 36,0.5)",
-				strokeColor : "rgba(248, 156, 36,1)",
-				data : [ 28, 68, 40, 19, 96 ]
-			}, {
-				fillColor : "rgba(7, 255, 255,0.5)",
-  				strokeColor : "rgba(87, 242, 226,1)",
-  				data : [ 28, 68, 40, 19, 96 ]
-   				} ]
-
-		}
-
-		var myBarChart = new Chart(document.getElementById("canvas")
-				.getContext("2d")).Bar(BarChart, {
-			scaleFontSize : 13,
-			scaleFontColor : "#ffa45e"
-		});
-	</script>  -->
+<!-- 	
+<div id="dialogWait"  style="display: none; text-align: center;">
+	  
+	       
+	                
+						<img style="width: 100%;" src="img/30.GIF">
+			
+	</div> 
+	 -->
 </body>
 </html>
 

@@ -1,0 +1,11 @@
+.dialog {
+	 z-index:90999 !important;
+}
+.dynamic-input-error {
+	font-size: 10pt;
+	color: red;
+}
+.message_success {
+	color: #3A7672;
+	font-size: 14pt;
+}

@@ -17,7 +17,7 @@ import java.awt.Point;
 
 public class main {
 
-	public static int soluong = 4000;
+	public static int soluong = 30;
 	
 	public static void main(String[] args) {
 		giai_thuat fn = new giai_thuat();
@@ -47,17 +47,17 @@ public class main {
 
 			}
 			int k =0;
-
-			/*long startTime = System.currentTimeMillis();
+for(k =0 ; k < 10 ; k++){
+			long startTime = System.currentTimeMillis();
 			Pair bruteForceClosestPair = fn.bruteForce(points);
 			long elapsedTime = System.currentTimeMillis() - startTime;
 			System.out.println(bruteForceClosestPair);
 			System.out.println(elapsedTime);
-			rs.addResult(db, rID + 1, "1", k, bruteForceClosestPair,elapsedTime);*/
+			rs.addResult(db, rID + 1, "1", k, bruteForceClosestPair,elapsedTime);
 
-			long startTime = System.currentTimeMillis();
+			 startTime = System.currentTimeMillis();
 			Pair dqClosestPair = fn.divideAndConquer(points);
-			long elapsedTime = System.currentTimeMillis() - startTime;
+			 elapsedTime = System.currentTimeMillis() - startTime;
 			System.out.println(dqClosestPair);
 			System.out.println(elapsedTime);
 			rs.addResult(db, rID + 1, "2", k, dqClosestPair,elapsedTime);
@@ -68,13 +68,14 @@ public class main {
 			System.out.println(Sweeping);
 			System.out.println(elapsedTime);
 			rs.addResult(db, rID + 1, "3", k, Sweeping,elapsedTime);
-			
+}			
+/*
 			ObjectSet<result> results1 = rs.selectAll(db);
 			for(result  ra : results1){
 				
 				System.out.println(ra.getThoigian());
 			}
-			
+*/
 	
 		cnn.closeconnect();
 	}

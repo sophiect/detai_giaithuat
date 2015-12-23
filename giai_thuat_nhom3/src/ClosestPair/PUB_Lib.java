@@ -28,7 +28,7 @@ public class PUB_Lib {
 
 	public void connect(){
 		
-		db = Db4oEmbedded.openFile("F:/workspace/giai_thuat_nhom3/db.db4o");
+		db = Db4oEmbedded.openFile("F:/GitHub/detai_giaithuat/giai_thuat_nhom3/db.db4o");
 	}
 	
 	public void closeconnect(){

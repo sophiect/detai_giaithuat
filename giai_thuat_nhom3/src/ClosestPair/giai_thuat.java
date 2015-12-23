@@ -220,6 +220,7 @@ public class giai_thuat {
 	}
 
 	// ---------------tinh toan
+	
 	public void Run(int soluong, int sovonglap) {
 		
 		

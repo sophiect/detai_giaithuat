@@ -86,7 +86,7 @@ public class tinhtoan extends HttpServlet {
 			elapsedTime = System.currentTimeMillis() - startTime;
 			rs.addResult(db, rID + 1, "2", k, dqClosestPair,elapsedTime);
 			
-			/* startTime = System.currentTimeMillis();
+			startTime = System.currentTimeMillis();
 			Pair bruteForceClosestPair = fn.bruteForce(points);
 			 elapsedTime = System.currentTimeMillis() - startTime;
 			rs.addResult(db, rID + 1, "1", k, bruteForceClosestPair,elapsedTime);
@@ -94,15 +94,14 @@ public class tinhtoan extends HttpServlet {
 					&& Sweeping.distance != bruteForceClosestPair.distance) {
 				kq="NO";
 			}
-*
-*/
+
 		
 
 			
-
+/*
 			if (Sweeping.distance != dqClosestPair.distance) {
 				kq="NO";
-			}
+			}*/
 			else
 				kq = "OK";
 		
