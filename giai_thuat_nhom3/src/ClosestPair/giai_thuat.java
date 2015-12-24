@@ -14,6 +14,8 @@ import java.awt.Point;
 
 public class giai_thuat {
 
+
+
 	// ------ BRUTE FORCE
 
 	public static double distance(Point p1, Point p2) {
@@ -118,7 +120,59 @@ public class giai_thuat {
 		}
 		return closestPair;
 	}
+// cong 5
+	
+	public static Pair divideAndConquer5(List<? extends Point> points) {
+		List<Point> pointsSortedByX = new ArrayList<Point>(points);
+		sortByX(pointsSortedByX);
+		List<Point> pointsSortedByY = new ArrayList<Point>(points);
+		sortByY(pointsSortedByY);
+		return divideAndConquer5(pointsSortedByX, pointsSortedByY);
+	}
 
+	private static Pair divideAndConquer5(List<? extends Point> pointsSortedByX, List<? extends Point> pointsSortedByY) {
+		int numPoints = pointsSortedByX.size();
+		if (numPoints <= 3)
+			return bruteForce(pointsSortedByX);
+
+		int dividingIndex = numPoints >>> 1;
+		List<? extends Point> leftOfCenter = pointsSortedByX.subList(0, dividingIndex);
+		List<? extends Point> rightOfCenter = pointsSortedByX.subList(dividingIndex, numPoints);
+
+		List<Point> tempList = new ArrayList<Point>(leftOfCenter);
+		sortByY(tempList);
+		Pair closestPair = divideAndConquer5(leftOfCenter, tempList);
+
+		tempList.clear();
+		tempList.addAll(rightOfCenter);
+		sortByY(tempList);
+		Pair closestPairRight = divideAndConquer5(rightOfCenter, tempList);
+
+		if (closestPairRight.distance < closestPair.distance)
+			closestPair = closestPairRight;
+
+		tempList.clear();
+		double shortestDistance = closestPair.distance;
+		double centerX = rightOfCenter.get(0).x;
+		for (Point point : pointsSortedByY)
+			if (Math.abs(centerX - point.x) < shortestDistance)
+				tempList.add(point);
+
+		for (int i = 0; i < tempList.size() - 1; i++) {
+			Point point1 = tempList.get(i);
+			for (int j = i + 1; j < 5; j++) {
+				Point point2 = tempList.get(j);
+				if ((point2.y - point1.y) >= shortestDistance)
+					break;
+				double distance = distance(point1, point2);
+				if (distance < closestPair.distance) {
+					closestPair.update(point1, point2, distance);
+					shortestDistance = distance;
+				}
+			}
+		}
+		return closestPair;
+	}
 	// ---- SweepingSorter
 
 	private static Comparator<Point> VERTICAL_COMPARATOR = new Comparator<Point>() {
@@ -264,4 +318,19 @@ public class giai_thuat {
 
 		}
 	}
+
+	  public static int RandomInt(int aStart, int aEnd, Random aRandom){
+		    if (aStart > aEnd) {
+		      throw new IllegalArgumentException("Start cannot exceed End.");
+		    }
+		    
+		    long range = (long)aEnd - (long)aStart + 1;
+		    long fraction = (long)(range * aRandom.nextDouble());
+		    int randomNumber =  (int)(fraction + aStart);    
+		    return randomNumber;
+		  }
+	  public Point chuyenkieu(int x, int y){
+		  Point p = new Point(x, y);
+		  return p;
+	  }
 }

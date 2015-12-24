@@ -10,18 +10,10 @@
 	href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
 	rel='stylesheet' type='text/css'>
 
-<!-- BEGIN CORE JS FRAMEWORK-->
-<!-- <script src="assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js"
-	type="text/javascript"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js"
-	type="text/javascript"></script>
-<script src="assets/plugins/breakpoints.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-unveil/jquery.unveil.min.js"
-	type="text/javascript"></script> -->
 
 <!-- END CORE JS FRAMEWORK -->
-
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
 
 <script src="assets/js/jquery-1.11.1.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/Chart.min.js"></script>
@@ -35,10 +27,9 @@
 <link href="jquery-ui-1.11.4/jquery-ui.theme.css" rel="stylesheet"
 	type="text/css" />
 <script src="jquery-ui-1.11.4/jquery-ui.js" type="text/javascript"></script>
-
-
-<script type="text/javascript"src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<!-- <script type="text/javascript"src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ -->
 </head>
 
 <body>
@@ -61,9 +52,113 @@
 
 		<div class="box">
 			<div class="box-header">
-				<h2>
-					<i class="icon-bar-chart"></i> Thông Tin
-				</h2>
+				<h2 style="font-family: arial; color: white;">Thông Tin</h2>
+
+			</div>
+			<div class="box-content">
+				<div align="left" class="box" title=" Thông Tin "
+					style="display: normal; text-align: center;">
+				Trường hợp các tập dữ liệu điểm :
+					<select id= "luachon" style=" background-color: white;color: #2d313b;font-size: 16px; border-color: #0090d9;text-align: center;"  onchange="showluachon()">
+						<option value="0"></option>
+						<option value="1"> Ngẫu nhiên</option>
+						<option value="2"> Nhỏ hơn 30 điểm</option>
+						<option value="3"> Điểm lệch về 1 trục</option>
+						
+					</select>
+					
+					
+
+				</div>
+			<div align="center" class="box" id="tt_ngau_nhien" style="display:none" title=" Thông Tin "
+					style="display: normal; text-align: center;">
+					<form name="thongtin" method="post">
+						<table align="center" width="80%" border="0" class="table-hover"
+							cellpadding="5px">
+							<tr>
+								<td align="left" class="cell-dialog">Số lượng điểm <font
+									color="red">*</font></td>
+								<td align="left" class="cell-dialog"><input id="txtsoluong"
+									name="txtsoluong" class="input-large " type="text"></td>
+							</tr>
+							<tr>
+								<td align="left" class="cell-dialog">Số lần thực hiện <font
+									color="red">*</font></td>
+								<td align="left" class="cell-dialog"><input id="txtsolan"
+									name="txtsolan" class="input-large " type="text"></td>
+							</tr>
+
+
+
+							<tr>
+								<td align="left" colspan="2" class="cell-dialog"><i>(<font
+										color="red">*</font>) thông tin bắt buộc nhập
+								</i></td>
+							</tr>
+							<tr>
+								<td align="center" colspan="2" class="cell-dialog">
+									<hr>
+									<button type="button" onclick="thuc_hien()"
+										class="btn btn-success btn-cons">Thực hiện</button>
+
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+<!-- 	dữ liệu nhỏ hơn 20 phần tử	 -->	
+				<div align="center" class="box" id ="tt_20" style="display:none">
+					<button class="btn btn-success" onclick="chay20()"> Thực hiện</button>
+				</div>
+				
+<!-- 	dữ liệu lệch về 1 hướng  -->		
+
+				<div align="center" class="box" id="tt_lech" style="display:none" title=" Thông Tin "
+					style="display: normal; text-align: center;">
+					<form name="thongtin" method="post">
+						<table align="center" width="80%" border="0" class="table-hover"
+							cellpadding="5px">
+							<tr>
+								<td align="left" class="cell-dialog">Số lượng điểm <font
+									color="red">*</font></td>
+								<td align="left" class="cell-dialog"><input id="txtsoluong_lech"
+									name="txtsoluong" class="input-large " type="text"></td>
+							</tr>
+							<tr>
+								<td align="left" class="cell-dialog">Số lần thực hiện <font
+									color="red">*</font></td>
+								<td align="left" class="cell-dialog"><input id="txtsolan_lech"
+									name="txtsolan" class="input-large " type="text"></td>
+							</tr>
+
+
+
+							<tr>
+								<td align="left" colspan="2" class="cell-dialog"><i>(<font
+										color="red">*</font>) thông tin bắt buộc nhập
+								</i></td>
+							</tr>
+							<tr>
+								<td align="center" colspan="2" class="cell-dialog">
+									<hr>
+									<button type="button" onclick="thuc_hien_lech()"
+										class="btn btn-success btn-cons">Thực hiện</button>
+
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+
+
+			</div>
+
+		</div>
+
+
+	<!-- 	<div class="box">
+			<div class="box-header">
+				<h2 style="font-family: arial; color: white;">Thông Tin</h2>
 
 			</div>
 			<div class="box-content">
@@ -82,7 +177,7 @@
 								<td align="left" class="cell-dialog">Số lần thực hiện <font
 									color="red">*</font></td>
 								<td align="left" class="cell-dialog"><input id="txtsolan"
-									name="txtsolan" class="input-large " type="text" ></td>
+									name="txtsolan" class="input-large " type="text"></td>
 							</tr>
 
 
@@ -108,61 +203,92 @@
 
 			</div>
 
-		</div>
+		</div> -->
 
 
 
 		<div class="box">
 
 			<div class="box-header">
-				<h2>
-					<i class="icon-bar-chart"></i> Thông Tin
+				<h2 style="font-family: arial; color: white;">Kết quả thực hiện
 				</h2>
 
 			</div>
-			<div id = "table_tt">
-				
-				
-			</div>
+
+			<p>
+				<br>
+			</p>
+
+			<div class="box" id="table_tt" align="center"></div>
 			<div align="center" class="box-content" style="width: 100%">
-			
-			
-												
+
+
+
 				<header>
 					<h1>Biểu Đồ</h1>
-				 	<table >
+					<table>
 						<tr align="left">
 							<th style="background: #83FFFF; width: 50px"></th>
 							<th style="width: 80px">Vét cạn</th>
-						
-							<th style="background: #FBCD91;  width: 50px"></th>
+
+							<th style="background: #FBCD91; width: 50px"></th>
 							<th style="width: 80px">chia để trị</th>
-						
-							<th style="background: #D3A6CE;  width: 50px"></th>
-							<th style="width: 80px"> Trượt phẳng</th>
+
+							<th style="background: #D3A6CE; width: 50px"></th>
+							<th style="width: 80px">Trượt phẳng</th>
 						</tr>
-					</table> 
-					
+					</table>
+
 				</header>
 
-				
+
 			</div>
-	
-			
-			<div>
-			<canvas id="canvasLine" height="500" width="1000"></canvas>
+
+
+			<div class="box" id="bd3" style="display: none" align="center">
+				<header>
+					<h2 style="font-family: arial;">
+						Biểu đồ thời gian chạy cả 3 giải thuật
+						</h1>
+				</header>
+
+				<canvas id="canvasLine" height="500" width="800"></canvas>
+
+				<div align="center">
+					<button class="btn btn-success" onclick="xemchitiet()">Xem
+						kết quả chi tiết</button>
+				</div>
+
 			</div>
-			<div>
-			<canvas id="canvasLine2" height="500" width="1000"></canvas>
+
+
+			<div class="box" id="bd2" style="display: none" align="center">
+				<header>
+					<h2 style="font-family: arial;">
+						Biểu đồ thời gian chạy giải thuật chia để trị và trượt phẳng
+						</h1>
+				</header>
+				<table>
+					<tr align="left">
+
+
+						<th style="background: #FBCD91; width: 50px"></th>
+						<th style="width: 80px">chia để trị</th>
+
+						<th style="background: #D3A6CE; width: 50px"></th>
+						<th style="width: 80px">Trượt phẳng</th>
+					</tr>
+				</table>
+				<canvas id="canvasLine2" height="500" width="800"></canvas>
+
 			</div>
-			<div style="display: none">
-			<canvas id="canvasBar" height="500" width="1000"></canvas>
-			</div>
+
+
 		</div>
 
 
 	</div>
-<!-- 	
+	<!-- 	
 <div id="dialogWait"  style="display: none; text-align: center;">
 	  
 	       
@@ -171,7 +297,12 @@
 			
 	</div> 
 	 -->
+
+
 </body>
+<script type="text/javascript">
+	
+</script>
 </html>
 
 

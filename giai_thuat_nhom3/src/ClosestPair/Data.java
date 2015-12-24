@@ -4,13 +4,14 @@ import java.awt.Point;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.db4o.ObjectSet;
 
 public class Data {
 
 		public String id;
-		public ObjectSet<Point> tapDiem;
+		public List<Point> tapDiem;
 		
 		public String getId() {
 			return id;
@@ -18,13 +19,13 @@ public class Data {
 		public void setId(String id) {
 			this.id = id;
 		}
-		public ObjectSet<Point> getTapDiem() {
+		public List<Point> getTapDiem() {
 			return tapDiem;
 		}
-		public void setTapDiem(ObjectSet<Point> tapDiem) {
+		public void setTapDiem(List<Point> tapDiem) {
 			this.tapDiem = tapDiem;
 		}
-		public Data(String id, ObjectSet<Point> tapDiem) {
+		public Data(String id, List<Point> tapDiem) {
 			super();
 			this.id = id;
 			this.tapDiem = tapDiem;
