@@ -1,22 +1,15 @@
-$(document).ready(
-function() {
-	$('.tabs .tab-links a').on(
-			'click',
-			function(e) {
-				var currentAttrValue = jQuery(this)
-						.attr('href');
-
-				// Show/Hide Tabs
-				jQuery('.tabs ' + currentAttrValue).show()
-						.siblings().hide();
-
-				// Change/remove current tab to active
-				jQuery(this).parent('li').addClass('active')
-						.siblings().removeClass('active');
-
-				e.preventDefault();
-			});
+$(document).ready(function() {	
 	
+$( "#dialogWait" ).dialog({
+        autoOpen: false,
+        show: "blind",
+        hide: "explode",
+        width: 700,
+        resizable: false,
+        modal: true
+    });
+
+
 });
 function thuc_hien() {
 	$('.dynamic-input-error').remove();
@@ -39,6 +32,8 @@ function thuc_hien() {
 						"<div style='color:red;' class='dynamic-input-error'>&uarr;&nbsp;Vui lòng nhập  thông tin.</div>");
 		valid = false;
 	}
+	
+	$("#dialogWait" ).dialog( "open" );
 	if (valid) {
 		$.ajax({
 			type : "POST",
@@ -47,6 +42,12 @@ function thuc_hien() {
 				'txtsolan' : txtsolan,
 				'txtsoluong' : txtsoluong
 			},
+			/*beforeSend: function(){
+				$("#divImg").html("<img id='imgLoading' src='images/ajax_loading.gif' width='22' height='22'  />");
+			},
+			complete: function(){
+				$("#divImg").html("");
+			},*/
 			success : function(data) {
 
 				if (data == "OK") {
@@ -132,7 +133,7 @@ function ketqua(solanlap) {
 									data : dataSweeping
 								}, {
 									fillColor : "rgba(248, 156, 36,0)",
-									strokeColor : "rgba(248, 156, 36,1)",
+									strokeColor : "rgba(255, 45, 45,1)",
 									pointColor : "rgba(255, 61, 61,1)",
 									pointStrokeColor : "#fff",
 									data : datadivideAndConquer
@@ -165,7 +166,7 @@ function ketqua(solanlap) {
 										data : dataSweeping
 									}, {
 										fillColor : "rgba(248, 156, 36,0)",
-										strokeColor : "rgba(248, 156, 36,1)",
+										strokeColor : "rgba(255, 45, 45,1)",
 										pointColor : "rgba(255, 61, 61,1)",
 										pointStrokeColor : "#fff",
 										data : datadivideAndConquer
@@ -471,7 +472,7 @@ function ketqua30() {
 									data : dataSweeping
 								}, {
 									fillColor : "rgba(248, 156, 36,0)",
-									strokeColor : "rgba(248, 156, 36,1)",
+									strokeColor : "rgba(255, 45, 45,1)",
 									pointColor : "rgba(255, 61, 61,1)",
 									pointStrokeColor : "#fff",
 									data : datadivideAndConquer
@@ -504,7 +505,7 @@ function ketqua30() {
 										data : dataSweeping
 									}, {
 										fillColor : "rgba(248, 156, 36,0)",
-										strokeColor : "rgba(248, 156, 36,1)",
+										strokeColor : "rgba(255, 45, 45,1)",
 										pointColor : "rgba(255, 61, 61,1)",
 										pointStrokeColor : "#fff",
 										data : datadivideAndConquer

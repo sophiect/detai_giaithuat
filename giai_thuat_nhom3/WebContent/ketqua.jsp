@@ -231,7 +231,7 @@
 							<th style="background: #83FFFF; width: 50px"></th>
 							<th style="width: 80px">Vét cạn</th>
 
-							<th style="background: #FBCD91; width: 50px"></th>
+							<th style="background: #FF3D3D; width: 50px"></th>
 							<th style="width: 80px">chia để trị</th>
 
 							<th style="background: #D3A6CE; width: 50px"></th>
@@ -272,7 +272,7 @@
 					<tr align="left">
 
 
-						<th style="background: #FBCD91; width: 50px"></th>
+						<th style="background: #FF3D3D; width: 50px"></th>
 						<th style="width: 80px">chia để trị</th>
 
 						<th style="background: #D3A6CE; width: 50px"></th>
@@ -288,15 +288,12 @@
 
 
 	</div>
-	<!-- 	
-<div id="dialogWait"  style="display: none; text-align: center;">
-	  
-	       
-	                
-						<img style="width: 100%;" src="img/30.GIF">
+	
+	<div id="dialogWait"  style="display: none; text-align: center;">
+<img style="width: 100%;" src="img/30.GIF">
 			
 	</div> 
-	 -->
+
 
 
 </body>
