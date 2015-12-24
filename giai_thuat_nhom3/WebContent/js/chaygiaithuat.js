@@ -196,11 +196,11 @@ function ketqua(solanlap) {
 							var t = "<table class='table' style='width:100%; text-align: left; font-size: medium;'>" +
 									"<tr style='text-align: center;height: 100px; background-color: rgba(108, 224, 255, 0.25); font-size: 16px; color: royalblue;'>" +
 									"<th> Lần</th>" +
-									"<th> Tên giải thuật</th>" +
-									"<th> Thời gian (mili giây)</th>" +
-									"<th> Điểm 1</th>" +
-									"<th> Điểm 2</th>" +
-									"<th> Khoảng cách</th>" +
+									"<th > Tên giải thuật</th>" +
+									"<th style='width:80px'> Thời gian (mili giây)</th>" +
+									"<th style='width:100px'> Điểm 1</th>" +
+									"<th style='width:100px'> Điểm 2</th>" +
+									"<th style='width:80px'> Khoảng cách</th>" +
 									"<th> </th>" +
 									"</tr>";
 							
@@ -234,8 +234,10 @@ function ketqua(solanlap) {
 										
 										if (data[i].tenkieu == "1")
 										{	
+											var kc = data[i].capdiem.distance;
+											
 											t += "<tr style='height:80px;font-size: 16px;color: rgb(167, 78, 158);'>";
-											t += "<td>Brute Force</td>";
+											t += "<td> Vét cạn</td>";
 
 											t += "<td>" + data[i].thoigian+"</td>";
 											t += "<td>X: " + data[i].capdiem.point1.x
@@ -244,7 +246,7 @@ function ketqua(solanlap) {
 											t += "<td>X: " + data[i].capdiem.point2.x
 													+ "<br> Y: " + data[i].capdiem.point2.y
 													+ "</td>";
-											t += "<td>" + data[i].capdiem.distance
+											t += "<td>" + kc.toFixed(6);
 													+ "</td>";
 											
 											t += "</tr>";
@@ -254,8 +256,10 @@ function ketqua(solanlap) {
 										
 										if (data[i].tenkieu == "2") 
 										{	
+											var kc = data[i].capdiem.distance;
 											t += "<tr style='height:80px;font-size: 16px;color: rgb(255, 61, 61);'>";
-											t += "<td>Divide and Conquer</td>";
+											t += "<td> Chia để trị" +
+													"</td>";
 
 											t += "<td>" + data[i].thoigian+"</td>";
 											t += "<td>X: " + data[i].capdiem.point1.x
@@ -264,7 +268,7 @@ function ketqua(solanlap) {
 											t += "<td>X: " + data[i].capdiem.point2.x
 													+ "<br> Y: " + data[i].capdiem.point2.y
 													+ "</td>";
-											t += "<td>" + data[i].capdiem.distance
+											t += "<td>" + kc.toFixed(6);
 													+ "</td>";
 											
 											t += "</tr>";
@@ -274,8 +278,9 @@ function ketqua(solanlap) {
 										
 										if (data[i].tenkieu == "3") 
 										{
+											var kc = data[i].capdiem.distance;
 											t += "<tr style='height:80px;font-size: 16px;color:rgb(255, 255, 0);'>";
-											t += "<td>Plane Sweep </td>";
+											t += "<td> Trượt phẳng </td>";
 
 											t += "<td>" + data[i].thoigian+"</td>";
 											t += "<td>X: " + data[i].capdiem.point1.x
@@ -284,7 +289,7 @@ function ketqua(solanlap) {
 											t += "<td>X: " + data[i].capdiem.point2.x
 													+ "<br> Y: " + data[i].capdiem.point2.y
 													+ "</td>";
-											t += "<td>" + data[i].capdiem.distance
+											t += "<td>" + kc.toFixed(6);
 													+ "</td>";
 											
 											t += "</tr>";
@@ -463,9 +468,12 @@ function ketqua30() {
 
 
 						
-							var tam1 = 0;
-							var tam2 = 0;
-							var tam3 = 0;
+							var tam1 = 1;
+							var tam2 = 1;
+							var tam3 = 1;
+							databruteForce[0]=0;
+							datadivideAndConquer=[0];
+							dataSweeping[0]=0;
 
 							var length = Object.keys(data).length;
 							
@@ -491,7 +499,7 @@ function ketqua30() {
 					
 // 3 giai thuat
 							var LineChart = {
-								labels : ["5","10","15","20","25","30"],
+								labels : ["0","3","9","12","15","18","21","24","27","30"],
 								datasets : [ {
 									fillColor : "rgba(167, 78, 158,0)",
 									strokeColor : "rgba(167, 78, 158,1)",
@@ -524,7 +532,7 @@ function ketqua30() {
 				// danh cho 2 giai thuat chia de tri và truot phang		
 							
 							var LineChart2 = {
-									labels : ["5","10","15","20","25","30"],
+									labels : ["0","3","9","12","15","18","21","24","27","30"],
 									datasets : [ {
 										fillColor : "rgba(167, 78, 158,0)",
 										strokeColor : "rgba(167, 78, 158,1)",
@@ -554,17 +562,17 @@ function ketqua30() {
 									"<tr style='text-align: center;height: 100px; background-color: rgba(108, 224, 255, 0.25); font-size: 16px; color: royalblue;'>" +
 									"<th> Số lượng điểm</th>" +
 									"<th> Tên giải thuật</th>" +
-									"<th> Thời gian (micro giây)</th>" +
-									"<th> Điểm 1</th>" +
-									"<th> Điểm 2</th>" +
-									"<th> Khoảng cách</th>" +
+									"<th style='width:80px'> Thời gian (micro giây)</th>" +
+									"<th style='width:100px'> Điểm 1</th>" +
+									"<th style='width:100px'> Điểm 2</th>" +
+									"<th style='width:80px'> Khoảng cách</th>" +
 									"<th> </th>" +
 									"</tr>";
 							
 							
 							var dem = 0;
-							var vd = 5;
-							for(var lap = 0;lap<6;lap++){
+							var vd = 3;
+							for(var lap = 0;lap<10;lap++){
 								 
 								t+="<tr>" +
 									"<td rowspan='4' style='color: black; font-size: 20px;'>"+vd+"</td>" +
@@ -579,7 +587,7 @@ function ketqua30() {
 										"<button class='btn btn-success' type='submit'  style='height: 35px; width: 50px;'>Data</button>" +
 										"</form>" +
 										"<br>"+
-									"<button class='btn btn-success' onclick='runAgain("+data[0].id+lap+")' style='height: 35px; width: 50px;'>Run </button> </td>" +
+									"<button class='btn btn-success' onclick='runAgain30("+data[0].id+lap+")' style='height: 35px; width: 50px;'>Run </button> </td>" +
 									"</tr>";
 								
 								for (var so = 0; so < 3; so++) {
@@ -592,8 +600,10 @@ function ketqua30() {
 										
 										if (data[i].tenkieu == "1")
 										{	
+											var kc = data[i].capdiem.distance;
+											
 											t += "<tr style='height:80px;font-size: 16px;color: rgb(167, 78, 158);'>";
-											t += "<td>Brute Force</td>";
+											t += "<td> Vét cạn</td>";
 
 											t += "<td>" + data[i].thoigian+"</td>";
 											t += "<td>X: " + data[i].capdiem.point1.x
@@ -602,7 +612,7 @@ function ketqua30() {
 											t += "<td>X: " + data[i].capdiem.point2.x
 													+ "<br> Y: " + data[i].capdiem.point2.y
 													+ "</td>";
-											t += "<td>" + data[i].capdiem.distance
+											t += "<td>" + kc.toFixed(6);
 													+ "</td>";
 											
 											t += "</tr>";
@@ -612,8 +622,10 @@ function ketqua30() {
 										
 										if (data[i].tenkieu == "2") 
 										{	
+											var kc = data[i].capdiem.distance;
 											t += "<tr style='height:80px;font-size: 16px;color: rgb(255, 61, 61);'>";
-											t += "<td>Divide and Conquer</td>";
+											t += "<td> Chia để trị" +
+													"</td>";
 
 											t += "<td>" + data[i].thoigian+"</td>";
 											t += "<td>X: " + data[i].capdiem.point1.x
@@ -622,7 +634,7 @@ function ketqua30() {
 											t += "<td>X: " + data[i].capdiem.point2.x
 													+ "<br> Y: " + data[i].capdiem.point2.y
 													+ "</td>";
-											t += "<td>" + data[i].capdiem.distance
+											t += "<td>" + kc.toFixed(6);
 													+ "</td>";
 											
 											t += "</tr>";
@@ -632,8 +644,9 @@ function ketqua30() {
 										
 										if (data[i].tenkieu == "3") 
 										{
+											var kc = data[i].capdiem.distance;
 											t += "<tr style='height:80px;font-size: 16px;color:rgb(255, 255, 0);'>";
-											t += "<td>Plane Sweep </td>";
+											t += "<td> Trượt phẳng </td>";
 
 											t += "<td>" + data[i].thoigian+"</td>";
 											t += "<td>X: " + data[i].capdiem.point1.x
@@ -642,7 +655,7 @@ function ketqua30() {
 											t += "<td>X: " + data[i].capdiem.point2.x
 													+ "<br> Y: " + data[i].capdiem.point2.y
 													+ "</td>";
-											t += "<td>" + data[i].capdiem.distance
+											t += "<td>" + kc.toFixed(6);
 													+ "</td>";
 											
 											t += "</tr>";
@@ -650,11 +663,12 @@ function ketqua30() {
 											
 										}
 										
+										
 										dem++;
 	
 									}
 								dem--;
-								vd+=5;
+								vd+=3;
 
 				}
 							t += "</table>";
@@ -727,3 +741,54 @@ function thuc_hien_lech(){
 	
 	
 }
+
+function runAgain30(ma){
+	
+	
+	if (true) {
+		$.ajax({
+			type : "POST",
+			url : "../giai_thuat_nhom3/RunAgain30",
+			data : {
+				'ma' : ma
+			},
+			beforeSend: function(){
+				$("#dialogWait" ).dialog( "open" );
+			},
+			complete: function(){
+				$("#dialogWait" ).dialog( "close" );
+			},
+			success : function(data) {
+
+				if (data == "OK") {
+					window.open("ChayLai.jsp", "Run Again");
+					
+			
+				} else {
+					alert("Không thực hiện được");
+					return false;
+				}
+			}
+		});
+	} else {
+		return valid;
+	}
+	
+	
+	
+	
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+

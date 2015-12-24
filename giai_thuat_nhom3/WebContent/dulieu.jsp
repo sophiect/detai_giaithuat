@@ -56,7 +56,7 @@ D_Data data = new D_Data();
 List<Data> datas = data.getDataId(db, ma);
 
 %>
-<%=ma %>
+
 	<div class="container">
 
 		<div class="clearfix""></div>

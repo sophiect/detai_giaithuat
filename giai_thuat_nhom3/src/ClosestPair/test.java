@@ -1,6 +1,7 @@
 package ClosestPair;
 
 import java.awt.Point;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -11,8 +12,12 @@ public class test {
 	
 	
 	public static void main(String[] args) {
+		double distance = 3244.31232131;
+		DecimalFormat df = new DecimalFormat("#.0000");   
+		double a = Double.parseDouble(df.format(distance));
+		System.out.println(a);
 		
-		 for(int k=0;k<5;k++){
+		/* for(int k=0;k<5;k++){
 			 System.out.println("");
 				System.out.println("lan "+k);
 		  int numPoints = 100;
@@ -47,7 +52,7 @@ public class test {
 				
 		 }
 			
-			 
+			 */
 
 	}
 

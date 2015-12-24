@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.google.gson.GsonBuilder"%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="ClosestPair.result"%>
@@ -154,12 +155,17 @@ int solanlap = rss.size()/3;
 				
 				int i= lap+dem;
 				
+				DecimalFormat df = new DecimalFormat("#.000000");      
+				double kc = rss.get(i).getCapdiem().getDistance();
+				String tam = df.format(kc);
+				
+				
 				if(rss.get(i).getTenkieu().equals("1")){
 					
 					%>
 	
 					<tr style= "height:80px;font-size: 16px;color: rgb(167, 78, 158);">
-					<td>Brute Force</td>
+					<td> Vét cạn</td>
 
 					<td><%=rss.get(i).getThoigian()%></td>
 					<td>X: <%=rss.get(i).getCapdiem().getPoint1().getX()%>
@@ -168,7 +174,7 @@ int solanlap = rss.size()/3;
 					<td>X: <%=rss.get(i).getCapdiem().getPoint2().getX()%>
 						 <br> Y: <%=rss.get(i).getCapdiem().getPoint2().getY()%>
 					</td>
-					<td><%=rss.get(i).getCapdiem().getDistance()%>
+					<td><%=tam%>
 					</td>
 					
 					</tr>
@@ -180,7 +186,7 @@ int solanlap = rss.size()/3;
 					%>
 
 					<tr style= "height:80px;font-size: 16px;color: rgb(167, 78, 158);">
-					<td>Divide and Conquer</td>
+					<td> Chia để trị</td>
 
 					<td><%= rss.get(i).getThoigian()%></td>
 					<td>X: <%= rss.get(i).getCapdiem().getPoint1().getX()%>
@@ -189,7 +195,7 @@ int solanlap = rss.size()/3;
 					<td>X: <%= rss.get(i).getCapdiem().getPoint2().getX()%>
 						 <br> Y: <%= rss.get(i).getCapdiem().getPoint2().getY()%>
 					</td>
-					<td><%= rss.get(i).getCapdiem().getDistance()%>
+					<td><%= tam%>
 					</td>
 					
 					</tr>
@@ -201,7 +207,7 @@ int solanlap = rss.size()/3;
 					%>
 
 					<tr style= "height:80px;font-size: 16px;color: rgb(167, 78, 158);">
-					<td>Plane Sweep</td>
+					<td> Trượt phẳng</td>
 
 					<td><%= rss.get(i).getThoigian()%></td>
 					<td>X: <%= rss.get(i).getCapdiem().getPoint1().getX()%>
@@ -210,7 +216,7 @@ int solanlap = rss.size()/3;
 					<td>X: <%= rss.get(i).getCapdiem().getPoint2().getX()%>
 						 <br> Y: <%= rss.get(i).getCapdiem().getPoint2().getY()%>
 					</td>
-					<td><%= rss.get(i).getCapdiem().getDistance()%>
+					<td><%= tam%>
 					</td>
 					
 					</tr>

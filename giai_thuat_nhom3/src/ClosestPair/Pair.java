@@ -1,5 +1,6 @@
 package ClosestPair;
 import java.awt.Point;
+import java.text.NumberFormat;
 
 public class Pair {
     public Point point1 = null;
@@ -30,6 +31,7 @@ public class Pair {
 	}
 
 	public void setDistance(double distance) {
+		  
 		this.distance = distance;
 	}
 

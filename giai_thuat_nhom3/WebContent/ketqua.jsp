@@ -58,7 +58,7 @@
 				<div align="left" class="box" title=" Thông Tin "
 					style="display: normal; text-align: center;">
 				Trường hợp các tập dữ liệu điểm :
-					<select id= "luachon" style=" background-color: white;color: #2d313b;font-size: 16px; border-color: #0090d9;text-align: center;"  onchange="showluachon()">
+					<select id= "luachon" style=" background-color: white;color: #2d313b;font-size: 16px; border-color: #0090d9;text-align: left;"  onchange="showluachon()">
 						<option value="0"></option>
 						<option value="1"> Ngẫu nhiên</option>
 						<option value="2"> Nhỏ hơn 30 điểm</option>

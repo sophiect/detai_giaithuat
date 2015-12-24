@@ -2,9 +2,7 @@ package controller;
 
 import java.awt.Point;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,22 +15,23 @@ import com.db4o.ObjectSet;
 
 import ClosestPair.D_Data;
 import ClosestPair.D_Result;
+import ClosestPair.Data;
 import ClosestPair.PUB_Lib;
 import ClosestPair.Pair;
 import ClosestPair.giai_thuat;
 import ClosestPair.result;
 
 /**
- * Servlet implementation class Run30
+ * Servlet implementation class RunAgain30
  */
-@WebServlet("/Run30")
-public class Run30 extends HttpServlet {
+@WebServlet("/RunAgain30")
+public class RunAgain30 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Run30() {
+    public RunAgain30() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,14 +40,7 @@ public class Run30 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String ma = request.getParameter("ma");
 		
 		String kq ="";
 		
@@ -58,54 +50,48 @@ public class Run30 extends HttpServlet {
 		PUB_Lib cnn = new PUB_Lib();
 		cnn.connect();
 		ObjectContainer db = cnn.getDb();
+		
+		//tim RID
+		
 		ObjectSet<result> results = rs.selectAll(db);
 		int total = results.size();
 		int rID = 0;
 		if (total != 0) {
 			rID = results.get(total - 1).getId();
 		}
-		int numPoints = 3;
-		for (int k = 0; k < 10; k++) {
-
 		
+		List<Data> datas = data.getDataId(db, ma);
+	
+		//Lay lai csdl
+		
+		List<Point> points = datas.get(0).getTapDiem();
+		Point[] pointsAr = new Point[points.size()];
+		int i =0;
+		
+		for(Point p : points){
+			pointsAr[i] = new Point(p);
+			i++;
+		}
 
-			List<Point> points = new ArrayList<Point>();
-			Point[] pointsAr = new Point[numPoints];
-			Random r = new Random();
-			
-			//chay ramdom
-			
-			for (int i = 0; i < numPoints; i++) {
-				
-				int x = fn.RandomInt(-10000, 10000, r);
-				int y = fn.RandomInt(-10000, 10000, r);
-				points.add(new Point(x, y));
-				pointsAr[i] = new Point(x, y);
-
-			}
-			
-			//them data
-			int ma = rID+1;
-			String nhan = Integer.toString(ma)+Integer.toString(k);
-			data.addData(db, nhan, points);
-			
-			
+	
+		
 			//chay giai thuat
+
 			long startTime = System.nanoTime();
-			
 			Pair Sweeping = fn.closestPair(pointsAr);
 			long elapsedTime = System.nanoTime() - startTime;
-			rs.addResult(db, ma, "3", k, Sweeping,elapsedTime);
+			rs.addResult(db, rID+1, "3",0, Sweeping,elapsedTime);
 			
-			startTime =System.nanoTime();
+			startTime = System.nanoTime();
 			Pair dqClosestPair = fn.divideAndConquer(points);
 			elapsedTime = System.nanoTime() - startTime;
-			rs.addResult(db, ma, "2", k, dqClosestPair,elapsedTime);
+			rs.addResult(db, rID+1, "2",0, dqClosestPair,elapsedTime);
 			
 			startTime = System.nanoTime();
 			Pair bruteForceClosestPair = fn.bruteForce(points);
 			 elapsedTime = System.nanoTime() - startTime;
-			rs.addResult(db, ma, "1", k, bruteForceClosestPair,elapsedTime);
+			rs.addResult(db, rID+1, "1", 0, bruteForceClosestPair,elapsedTime);
+			
 			if (bruteForceClosestPair.distance != dqClosestPair.distance
 					&& Sweeping.distance != bruteForceClosestPair.distance) {
 				kq="NO";
@@ -116,13 +102,19 @@ public class Run30 extends HttpServlet {
 
 			else
 				kq = "OK";
-			
-		numPoints+=3;
 		
-		}
-		cnn.closeconnect();
-		response.setContentType("text/plain");
-		response.getWriter().write(kq);
+			cnn.closeconnect();
+			response.setContentType("text/plain");
+			response.getWriter().write(kq);
+				
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

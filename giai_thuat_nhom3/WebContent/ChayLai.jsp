@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.text.NumberFormat"%>
 <%@page import="ClosestPair.result"%>
 <%@page import="com.db4o.ObjectSet"%>
 <%@page import="ClosestPair.D_Result"%>
@@ -100,14 +102,17 @@ ObjectSet<result> rss = db.queryByExample(new result(rID));
 	
 			<%
 			for(result rl: rss){
-			
+				DecimalFormat df = new DecimalFormat("#.000000");      
+				double kc = rl.getCapdiem().getDistance();
+				String tam = df.format(kc);
 				
 				if(rl.getTenkieu().equals("1")){
-					
+						
 					%>
 	
 					<tr style= "height:80px;font-size: 16px;color: rgb(167, 78, 158);">
-					<td>Brute Force</td>
+					<td>
+ Vét cạn</td>
 
 					<td><%=rl.getThoigian()%></td>
 					<td>X: <%=rl.getCapdiem().getPoint1().getX()%>
@@ -116,7 +121,7 @@ ObjectSet<result> rss = db.queryByExample(new result(rID));
 					<td>X: <%=rl.getCapdiem().getPoint2().getX()%>
 						 <br> Y: <%=rl.getCapdiem().getPoint2().getY()%>
 					</td>
-					<td><%=rl.getCapdiem().getDistance()%>
+					<td><%=tam%>
 					<span id = "tg1" value = "<%=rl.getThoigian() %>" >
 					
 					</td>
@@ -130,7 +135,7 @@ ObjectSet<result> rss = db.queryByExample(new result(rID));
 					%>
 
 					<tr style= "height:80px;font-size: 16px;color: rgb(167, 78, 158);">
-					<td>Divide and Conquer</td>
+					<td> Chia để trị</td>
 
 					<td><%= rl.getThoigian()%></td>
 					<td>X: <%= rl.getCapdiem().getPoint1().getX()%>
@@ -139,7 +144,7 @@ ObjectSet<result> rss = db.queryByExample(new result(rID));
 					<td>X: <%= rl.getCapdiem().getPoint2().getX()%>
 						 <br> Y: <%= rl.getCapdiem().getPoint2().getY()%>
 					</td>
-					<td><%= rl.getCapdiem().getDistance()%>
+					<td><%=tam%>
 					<span id = "tg2" value = "<%=rl.getThoigian() %>" >
 					</td>
 					
@@ -152,7 +157,7 @@ ObjectSet<result> rss = db.queryByExample(new result(rID));
 					%>
 
 					<tr style= "height:80px;font-size: 16px;color: rgb(167, 78, 158);">
-					<td>Plane Sweep</td>
+					<td> Trượt phẳng</td>
 
 					<td><%= rl.getThoigian()%></td>
 					<td>X: <%= rl.getCapdiem().getPoint1().getX()%>
@@ -161,7 +166,7 @@ ObjectSet<result> rss = db.queryByExample(new result(rID));
 					<td>X: <%= rl.getCapdiem().getPoint2().getX()%>
 						 <br> Y: <%= rl.getCapdiem().getPoint2().getY()%>
 					</td>
-					<td><%= rl.getCapdiem().getDistance()%>
+					<td><%=tam%>
 					<span id = "tg3" value = "<%=rl.getThoigian() %>" >
 					</td>
 					
