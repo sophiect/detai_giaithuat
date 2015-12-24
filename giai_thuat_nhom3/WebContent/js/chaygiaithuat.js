@@ -2,13 +2,17 @@ $(document).ready(function() {
 	
 $( "#dialogWait" ).dialog({
         autoOpen: false,
-        show: "blind",
-        hide: "explode",
         width: 700,
         resizable: false,
-        modal: true
-    });
+        modal: true,
+        dialogClass:'fixed-dialog'
+ });
 
+$('#dialogWait').parent().children('.ui-dialog-titlebar').remove();
+$('#dialogWait').parent().css('background','none').css('border','none');
+if($('#grid_title').length>0){
+         $('#fixed_title').html($('#grid_title').html());
+  }
 
 });
 function thuc_hien() {
@@ -33,7 +37,7 @@ function thuc_hien() {
 		valid = false;
 	}
 	
-	$("#dialogWait" ).dialog( "open" );
+	
 	if (valid) {
 		$.ajax({
 			type : "POST",
@@ -42,16 +46,16 @@ function thuc_hien() {
 				'txtsolan' : txtsolan,
 				'txtsoluong' : txtsoluong
 			},
-			/*beforeSend: function(){
-				$("#divImg").html("<img id='imgLoading' src='images/ajax_loading.gif' width='22' height='22'  />");
+			beforeSend: function(){
+				$("#dialogWait" ).dialog( "open" );
 			},
 			complete: function(){
-				$("#divImg").html("");
-			},*/
+				$("#dialogWait" ).dialog( "close" );
+			},
 			success : function(data) {
 
 				if (data == "OK") {
-					alert(" Bài toán đã giải xong");
+				//	alert(" Bài toán đã giải xong");
 					ketqua(txtsolan);
 			
 				} else {
@@ -72,6 +76,12 @@ function ketqua(solanlap) {
 					url : "../giai_thuat_nhom3/laykq",
 					data : {
 
+					},
+					beforeSend: function(){
+						$("#dialogWait" ).dialog( "open" );
+					},
+					complete: function(){
+						$("#dialogWait" ).dialog( "close" );
 					},
 					success : function(dataObj) {
 					
@@ -339,6 +349,12 @@ function runAgain(ma){
 			data : {
 				'ma' : ma
 			},
+			beforeSend: function(){
+				$("#dialogWait" ).dialog( "open" );
+			},
+			complete: function(){
+				$("#dialogWait" ).dialog( "close" );
+			},
 			success : function(data) {
 
 				if (data == "OK") {
@@ -393,10 +409,16 @@ function chay20(){
 			data : {
 				
 			},
+			beforeSend: function(){
+				$("#dialogWait" ).dialog( "open" );
+			},
+			complete: function(){
+				$("#dialogWait" ).dialog( "close" );
+			},
 			success : function(data) {
 
 				if (data == "OK") {
-					alert(" Bài toán đã giải xong");
+					//alert(" Bài toán đã giải xong");
 					ketqua30();
 			
 				} else {
@@ -419,6 +441,12 @@ function ketqua30() {
 					url : "../giai_thuat_nhom3/laykq",
 					data : {
 
+					},
+					beforeSend: function(){
+						$("#dialogWait" ).dialog( "open" );
+					},
+					complete: function(){
+						$("#dialogWait" ).dialog( "close" );
 					},
 					success : function(dataObj) {
 					
@@ -675,10 +703,16 @@ function thuc_hien_lech(){
 				'txtsolan' : txtsolan,
 				'txtsoluong' : txtsoluong
 			},
+			beforeSend: function(){
+				$("#dialogWait" ).dialog( "open" );
+			},
+			complete: function(){
+				$("#dialogWait" ).dialog( "close" );
+			},
 			success : function(data) {
 
 				if (data == "OK") {
-					alert(" Bài toán đã giải xong");
+				//	alert(" Bài toán đã giải xong");
 					ketqua(txtsolan);
 			
 				} else {

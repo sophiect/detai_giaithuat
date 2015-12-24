@@ -12,8 +12,7 @@
 
 
 <!-- END CORE JS FRAMEWORK -->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script> -->
 
 <script src="assets/js/jquery-1.11.1.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/Chart.min.js"></script>
@@ -27,7 +26,7 @@
 <link href="jquery-ui-1.11.4/jquery-ui.theme.css" rel="stylesheet"
 	type="text/css" />
 <script src="jquery-ui-1.11.4/jquery-ui.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
 <!-- <script type="text/javascript"src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
  -->
 </head>
@@ -289,10 +288,12 @@
 
 	</div>
 	
-	<div id="dialogWait"  style="display: none; text-align: center;">
-<img style="width: 100%;" src="img/30.GIF">
-			
-	</div> 
+<div id="dialogWait"  style="display: none; text-align: center;">
+	<div style="text-align:center"><img src="img/30.GIF"/></div>
+  <!--  <div style="text-align: center; color:green; padding-top:5px ">Đang tải dữ liệu. Vui lòng chờ</div>
+   <div style="text-align: center; color:green; padding:10px; font-weight: bold ">Nhấn phím F5 nếu chờ quá 30 giây.</div>		
+ -->
+ </div> 
 
 
 
